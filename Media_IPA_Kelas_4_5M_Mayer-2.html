@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IPA Kelas 4 - Pengelompokan Hewan Berdasarkan Jenis Makanan</title>
+<style>
+:root{
+  --green:#62b36f; --light:#f4fbf2; --yellow:#ffd966; --blue:#6fb7d8;
+  --orange:#f5a45b; --pink:#ef9ab0; --dark:#24412c; --white:#fff;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Trebuchet MS",Arial,sans-serif;background:#eef8ed;color:#26382a;line-height:1.55}
+header{background:linear-gradient(135deg,#5ab66a,#9bd56e);color:white;padding:34px 20px;text-align:center;border-bottom-left-radius:35px;border-bottom-right-radius:35px}
+header h1{margin:5px 0;font-size:clamp(28px,5vw,46px)}
+header p{margin:6px auto;max-width:850px;font-size:17px}
+.container{max-width:1100px;margin:auto;padding:20px}
+.nav{position:sticky;top:0;z-index:10;background:#fff;padding:10px;display:flex;gap:8px;overflow:auto;box-shadow:0 2px 10px #0001}
+.nav button{border:0;border-radius:18px;padding:10px 15px;background:#e6f5df;color:#27552d;font-weight:bold;cursor:pointer;white-space:nowrap}
+section{background:#fff;border-radius:25px;padding:24px;margin:22px 0;box-shadow:0 7px 20px #00000010}
+h2{color:#347341;margin-top:0}
+.badge{display:inline-block;background:#fff0b8;padding:6px 12px;border-radius:20px;font-weight:bold;margin:3px}
+.goal{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.goal div{background:#f4fbf2;border-left:6px solid var(--green);padding:14px;border-radius:15px}
+.animals{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:15px}
+.card{background:#fbfffa;border:2px solid #d8ecd5;border-radius:20px;padding:15px;text-align:center;transition:.2s}
+.card:hover{transform:translateY(-4px);box-shadow:0 8px 18px #0001}
+.animal-svg{height:125px;width:100%;display:block}
+.type{font-weight:bold;padding:6px 12px;border-radius:15px;display:inline-block}
+.herb{background:#dff4ce;color:#2d7435}.carn{background:#ffe0d6;color:#a83d24}.omni{background:#fff0b5;color:#8b6515}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px}
+.step{padding:17px;border-radius:18px;color:#243}
+.step:nth-child(1){background:#e1f1ff}.step:nth-child(2){background:#fff0c8}.step:nth-child(3){background:#e7f8dc}
+.step:nth-child(4){background:#fbe0ea}.step:nth-child(5){background:#e7e2ff}
+.sim{background:#f7fbff;border:2px dashed #7cb8d7}
+.dragarea{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.dropzone{min-height:190px;border-radius:20px;padding:12px;text-align:center;border:3px dashed #aaa;background:#fff}
+.dropzone h3{margin:5px}.dropzone.herbzone{border-color:#70b96d}.dropzone.carnzone{border-color:#e78c70}.dropzone.omnizone{border-color:#e5be55}
+.draggable{cursor:grab;background:white;border:1px solid #ddd;border-radius:15px;margin:8px;padding:8px;display:flex;align-items:center;gap:8px}
+.mini{width:50px;height:45px}.correct{background:#d8f5d2!important;border-color:#53a44f!important}.wrong{background:#ffe0dc!important;border-color:#d96d5e!important}
+.foods{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin:10px}.food{font-size:42px;background:#fff8df;border-radius:18px;padding:8px 15px}
+.quiz{background:#f8fbff;border-left:7px solid #6eaed1;margin:14px 0;padding:15px;border-radius:14px}
+label{display:block;margin:8px 0;padding:8px;border-radius:10px}
+label:hover{background:#eef7ff}
+button.primary{background:#4d9d5b;color:white;border:0;border-radius:15px;padding:12px 20px;font-weight:bold;cursor:pointer;font-size:16px}
+.result{font-size:20px;font-weight:bold;margin-top:15px;padding:15px;border-radius:15px;background:#eef8ed}
+footer{text-align:center;padding:25px;color:#55705a}
+@media(max-width:700px){.dragarea{grid-template-columns:1fr}.container{padding:10px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="badge">🔬 IPA SD/MI Kelas 4</div>
+  <h1>🐾 Yuk, Kenali Makanan Hewan!</h1>
+  <p>Pengelompokan Hewan Berdasarkan Jenis Makanannya</p>
+  <p>Belajar dengan mengamati, bertanya, mencoba, menalar, dan mengomunikasikan.</p>
+</header>
+
+<div class="nav">
+  <button onclick="go('tujuan')">🎯 Tujuan</button>
+  <button onclick="go('materi')">📚 Materi</button>
+  <button onclick="go('saintifik')">🔎 5M</button>
+  <button onclick="go('simulasi')">🎮 Simulasi</button>
+  <button onclick="go('evaluasi')">📝 Evaluasi</button>
+</div>
+
+<main class="container">
+<section id="tujuan">
+<h2>🎯 Tujuan Pembelajaran</h2>
+<div class="goal">
+<div>🐄 Siswa dapat menjelaskan bahwa hewan memiliki jenis makanan yang berbeda.</div>
+<div>🥬 Siswa dapat mengelompokkan hewan menjadi herbivor, karnivor, dan omnivor.</div>
+<div>🧠 Siswa dapat memberikan alasan berdasarkan jenis makanan yang dimakan hewan.</div>
+<div>🤝 Siswa dapat menyampaikan hasil pengamatan secara sederhana.</div>
+</div>
+</section>
+
+<section id="materi">
+<h2>📚 Materi Inti</h2>
+<p>Hewan dapat dikelompokkan berdasarkan jenis makanannya. Ada hewan yang terutama memakan tumbuhan, ada yang memakan hewan lain, dan ada yang memakan tumbuhan serta hewan.</p>
+<div class="animals">
+
+<div class="card">
+<svg class="animal-svg" viewBox="0 0 180 125" aria-label="Sapi"><ellipse cx="90" cy="72" rx="62" ry="34" fill="#9b684b"/><circle cx="142" cy="58" r="25" fill="#9b684b"/><circle cx="151" cy="53" r="3" fill="#222"/><path d="M130 37l-15-13 20 7M157 38l15-13-8 19" fill="#f1d2b7"/><rect x="48" y="92" width="9" height="25" rx="4" fill="#6d4738"/><rect x="119" y="92" width="9" height="25" rx="4" fill="#6d4738"/><circle cx="54" cy="69" r="9" fill="#f2e1cf"/><circle cx="105" cy="56" r="12" fill="#f2e1cf"/></svg>
+<h3>🐄 Sapi</h3><span class="type herb">🌿 Herbivor</span>
+<p>Makanan utama: rumput dan tumbuhan.</p>
+</div>
+
+<div class="card">
+<svg class="animal-svg" viewBox="0 0 180 125" aria-label="Kelinci"><ellipse cx="88" cy="72" rx="58" ry="31" fill="#e8e0d2"/><circle cx="139" cy="57" r="24" fill="#e8e0d2"/><circle cx="147" cy="52" r="3" fill="#222"/><path d="M130 39Q116 10 127 8M150 39Q164 10 153 8" fill="none" stroke="#8b735c" stroke-width="6"/><rect x="48" y="92" width="8" height="26" fill="#76614e"/><rect x="117" y="92" width="8" height="26" fill="#76614e"/><path d="M125 67q14 10 27 0" fill="none" stroke="#777" stroke-width="4"/></svg>
+<h3>🐇 Kelinci</h3><span class="type herb">🌿 Herbivor</span>
+<p>Makanan utama: rumput, daun, dan sayuran.</p>
+</div>
+
+<div class="card">
+<svg class="animal-svg" viewBox="0 0 180 125" aria-label="Harimau"><ellipse cx="82" cy="73" rx="53" ry="29" fill="#d6a03d"/><circle cx="139" cy="58" r="23" fill="#c9832f"/><circle cx="139" cy="58" r="33" fill="none" stroke="#8e5b25" stroke-width="13"/><circle cx="146" cy="53" r="3" fill="#111"/><path d="M149 65l10 4-10 4" fill="#7d3b2c"/><rect x="45" y="91" width="9" height="27" fill="#b27a2d"/><rect x="113" y="91" width="9" height="27" fill="#b27a2d"/></svg>
+<h3>🐯 Harimau</h3><span class="type carn">🥩 Karnivor</span>
+<p>Makanan utama: daging dan hewan lain.</p>
+</div>
+
+<div class="card">
+<svg class="animal-svg" viewBox="0 0 180 125" aria-label="Ayam"><ellipse cx="85" cy="72" rx="45" ry="30" fill="#fffaf0"/><circle cx="125" cy="55" r="22" fill="#fffaf0"/><circle cx="132" cy="51" r="3" fill="#222"/><path d="M140 57l20 6-20 6" fill="#e7a53e"/><path d="M129 36q7-14 14 0q7-14 14 0" fill="#d95a45"/><path d="M60 102l-3 18M88 101l3 19" stroke="#c78936" stroke-width="5"/><path d="M54 120h15M84 120h15" stroke="#c78936" stroke-width="4"/></svg>
+<h3>🐔 Ayam</h3><span class="type omni">🌿🥩 Omnivor</span>
+<p>Dapat memakan biji-bijian, tumbuhan, dan hewan kecil.</p>
+</div>
+
+<div class="card">
+<svg class="animal-svg" viewBox="0 0 180 125" aria-label="Beruang"><ellipse cx="83" cy="73" rx="55" ry="33" fill="#795548"/><circle cx="140" cy="58" r="24" fill="#795548"/><circle cx="126" cy="36" r="9" fill="#795548"/><circle cx="153" cy="36" r="9" fill="#795548"/><circle cx="147" cy="53" r="3" fill="#111"/><ellipse cx="154" cy="66" rx="8" ry="5" fill="#49352e"/><rect x="45" y="94" width="12" height="24" rx="5" fill="#5d4037"/><rect x="112" y="94" width="12" height="24" rx="5" fill="#5d4037"/></svg>
+<h3>🐻 Beruang</h3><span class="type omni">🌿🥩 Omnivor</span>
+<p>Dapat memakan buah, tumbuhan, ikan, dan hewan kecil.</p>
+</div>
+
+</div>
+<div class="foods">
+<div class="food">🌿</div><div class="food">🥬</div><div class="food">🍎</div><div class="food">🐟</div><div class="food">🥩</div>
+</div>
+</section>
+
+<section id="saintifik">
+<h2>🔎 Belajar dengan Pendekatan Saintifik (5M)</h2>
+<div class="steps">
+<div class="step"><h3>1. 👀 Mengamati</h3><p>Perhatikan gambar sapi, kelinci, harimau, ayam, dan beruang. Amati makanan yang biasa dimakan.</p></div>
+<div class="step"><h3>2. ❓ Menanya</h3><p>Mengapa sapi dan harimau tidak termasuk kelompok yang sama? Apa yang dimakan ayam?</p></div>
+<div class="step"><h3>3. 🧪 Mencoba</h3><p>Seret kartu hewan ke kelompok makanan yang sesuai pada simulasi.</p></div>
+<div class="step"><h3>4. 🧠 Menalar</h3><p>Bandingkan makanan setiap hewan. Kelompokkan berdasarkan jenis makanannya.</p></div>
+<div class="step"><h3>5. 🗣️ Mengomunikasikan</h3><p>Jelaskan hasil kelompokmu: nama hewan, jenis makanan, dan alasan pengelompokannya.</p></div>
+</div>
+</section>
+
+<section id="simulasi" class="sim">
+<h2>🎮 Simulasi: Kelompokkan Hewan!</h2>
+<p><b>Petunjuk:</b> Seret kartu hewan ke kotak yang tepat. Jika menggunakan HP, tekan dan tahan kartu lalu geser.</p>
+<div id="cards" class="animals" style="margin-bottom:15px"></div>
+<div class="dragarea">
+<div class="dropzone herbzone" data-type="herb" ondragover="allowDrop(event)" ondrop="drop(event)">
+<h3>🌿 HERBIVOR</h3><p>Memakan tumbuhan</p><div id="herbDrop"></div>
+</div>
+<div class="dropzone carnzone" data-type="carn" ondragover="allowDrop(event)" ondrop="drop(event)">
+<h3>🥩 KARNIVOR</h3><p>Memakan hewan lain</p><div id="carnDrop"></div>
+</div>
+<div class="dropzone omnizone" data-type="omni" ondragover="allowDrop(event)" ondrop="drop(event)">
+<h3>🌿🥩 OMNIVOR</h3><p>Memakan tumbuhan dan hewan</p><div id="omniDrop"></div>
+</div>
+</div>
+<p id="simResult"></p>
+<button class="primary" onclick="resetGame()">🔄 Ulangi Simulasi</button>
+</section>
+
+<section id="evaluasi">
+<h2>📝 Evaluasi</h2>
+<p>Pilih jawaban yang paling tepat.</p>
+<form id="quizForm">
+<div class="quiz"><b>1. Hewan yang makanan utamanya tumbuhan disebut ...</b>
+<label><input type="radio" name="q1" value="a"> a. Karnivor</label>
+<label><input type="radio" name="q1" value="b"> b. Herbivor</label>
+<label><input type="radio" name="q1" value="c"> c. Omnivor</label></div>
+<div class="quiz"><b>2. Hewan yang memakan hewan lain disebut ...</b>
+<label><input type="radio" name="q2" value="a"> a. Herbivor</label>
+<label><input type="radio" name="q2" value="b"> b. Omnivor</label>
+<label><input type="radio" name="q2" value="c"> c. Karnivor</label></div>
+<div class="quiz"><b>3. Ayam termasuk omnivor karena ...</b>
+<label><input type="radio" name="q3" value="a"> a. hanya memakan rumput</label>
+<label><input type="radio" name="q3" value="b"> b. dapat memakan tumbuhan dan hewan kecil</label>
+<label><input type="radio" name="q3" value="c"> c. hanya memakan daging</label></div>
+<div class="quiz"><b>4. Contoh hewan herbivor adalah ...</b>
+<label><input type="radio" name="q4" value="a"> a. sapi</label>
+<label><input type="radio" name="q4" value="b"> b. harimau</label>
+<label><input type="radio" name="q4" value="c"> c. ayam</label></div>
+<div class="quiz"><b>5. Beruang dapat termasuk omnivor karena dapat memakan ...</b>
+<label><input type="radio" name="q5" value="a"> a. tumbuhan dan hewan</label>
+<label><input type="radio" name="q5" value="b"> b. rumput saja</label>
+<label><input type="radio" name="q5" value="c"> c. daging saja</label></div>
+<button type="button" class="primary" onclick="checkQuiz()">✅ Periksa Jawaban</button>
+<div id="quizResult" class="result"></div>
+</form>
+</section>
+
+<section>
+<h2>🌟 Refleksi</h2>
+<p>Lengkapi secara lisan atau tertulis:</p>
+<ul>
+<li>Hari ini saya mengetahui bahwa ...</li>
+<li>Hewan yang paling menarik bagi saya adalah ... karena ...</li>
+<li>Satu hal baru yang saya pelajari adalah ...</li>
+</ul>
+</section>
+</main>
+<footer>Media pembelajaran IPA SD/MI Kelas 4 • Dirancang dengan prinsip pendekatan saintifik dan Teori Kognitif Multimedia Mayer.</footer>
+
+<script>
+const animals=[
+ {name:"Sapi",emoji:"🐄",type:"herb",food:"rumput & tumbuhan"},
+ {name:"Kelinci",emoji:"🐇",type:"herb",food:"rumput, daun & sayuran"},
+ {name:"Harimau",emoji:"🐯",type:"carn",food:"daging/hewan lain"},
+ {name:"Ayam",emoji:"🐔",type:"omni",food:"biji, tumbuhan & hewan kecil"},
+ {name:"Beruang",emoji:"🐻",type:"omni",food:"buah, tumbuhan, ikan & hewan kecil"}
+];
+
+function makeCards(){
+ const box=document.getElementById("cards"); box.innerHTML="";
+ animals.forEach((a,i)=>{
+  const d=document.createElement("div"); d.className="draggable"; d.draggable=true; d.id="animal"+i;
+  d.dataset.type=a.type; d.ondragstart=ev=>{ev.dataTransfer.setData("id",d.id)};
+  d.innerHTML=`<span style="font-size:42px">${a.emoji}</span><div><b>${a.name}</b><br><small>Makanan: ${a.food}</small></div>`;
+  box.appendChild(d);
+ });
+}
+function allowDrop(e){e.preventDefault()}
+function drop(e){
+ e.preventDefault();
+ const id=e.dataTransfer.getData("id"), el=document.getElementById(id);
+ if(!el)return;
+ const zone=e.currentTarget, type=zone.dataset.type;
+ el.classList.remove("correct","wrong");
+ if(el.dataset.type===type){
+   el.classList.add("correct"); zone.querySelector("div").appendChild(el);
+   el.draggable=false; el.ondragstart=null;
+ }else{
+   el.classList.add("wrong");
+   setTimeout(()=>el.classList.remove("wrong"),700);
+ }
+ updateSim();
+}
+function updateSim(){
+ const placed=document.querySelectorAll(".dropzone .draggable").length;
+ document.getElementById("simResult").innerHTML=placed===5?
+ "🎉 Hebat! Semua hewan sudah dikelompokkan dengan tepat. Sekarang jelaskan alasanmu!":
+ `Kemajuan: <b>${placed}/5</b> hewan sudah ditempatkan dengan benar.`;
+}
+function resetGame(){
+ ["herbDrop","carnDrop","omniDrop"].forEach(id=>document.getElementById(id).innerHTML="");
+ makeCards(); document.getElementById("simResult").innerHTML="";
+}
+function checkQuiz(){
+ const ans={q1:"b",q2:"c",q3:"b",q4:"a",q5:"a"}; let score=0;
+ Object.keys(ans).forEach(q=>{if(document.querySelector(`input[name="${q}"]:checked`)?.value===ans[q])score+=20});
+ const msg=score===100?"🌟 Luar biasa! Semua jawaban benar.":score>=80?"👏 Bagus sekali! Tinggal sedikit lagi untuk sempurna.":score>=60?"👍 Cukup baik. Pelajari kembali bagian yang belum tepat.":"💪 Jangan menyerah. Baca kembali materi, lalu coba lagi.";
+ document.getElementById("quizResult").innerHTML=`Nilai kamu: <b>${score}</b>/100<br>${msg}`;
+}
+function go(id){document.getElementById(id).scrollIntoView({behavior:"smooth",block:"start"})}
+makeCards();
+</script>
+</body>
+</html>
